@@ -4,7 +4,6 @@ const progress = player.querySelector('.progress');
 const progressBar = player.querySelector('.progress-filled');
 const toggle = player.querySelector('.toggle');
 const fullscreen = player.querySelector('.fullscreen');
-const volume = player.querySelector('.volume');
 
 const skipButtons = player.querySelectorAll('button[data-skip]');
 const ranges = player.querySelectorAll(`input[type='range']`);
@@ -43,22 +42,6 @@ function scrub(e) {
     video.currentTime = (e.offsetX / progress.offsetWidth) * video.duration;
 }
 
-function classListRemoveAndAdd(el, removeClass, addClass) {
-    el.classList.remove(removeClass);
-    el.classList.add(addClass);
-}
-
-function adjustVolume(e) {
-    const icon = this.querySelector('i');
-    if (icon.classList.contains('fa-volume-up')) {
-        classListRemoveAndAdd(icon, 'fa-volume-up', 'fa-volume-down');
-    } else if (icon.classList.contains('fa-volume-down')) {
-        classListRemoveAndAdd(icon, 'fa-volume-down', 'fa-volume-off');
-    } else {
-        classListRemoveAndAdd(icon, 'fa-volume-off', 'fa-volume-up');
-    }
-    console.log(icon.classList);
-}
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
@@ -66,7 +49,6 @@ video.addEventListener('timeupdate', handleProgressUpdate);
 
 toggle.addEventListener('click', togglePlay);
 fullscreen.addEventListener('click', toggleFullscreen);
-volume.addEventListener('click', adjustVolume);
 
 skipButtons.forEach(button => button.addEventListener('click', skip));
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));

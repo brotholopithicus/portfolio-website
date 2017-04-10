@@ -2,7 +2,6 @@ extends layout
 
 block stylesheets
     link(rel='stylesheet', href='/css/style.css')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
 block content
     .player
         video.viewer(src='/video.mp4')
@@ -10,8 +9,6 @@ block content
             .progress
                 .progress-filled
             button.player-button.toggle(title='Toggle Play') &#x25BA;
-            button.player-button.volume
-                i.fa.fa-volume-up
             input.slider(type='range', name='volume', min='0', max='1', step='0.05', value='1')
             input.slider(type='range', name='playbackRate', min='0.5', max='2', step='0.1', value='1') 
             button.player-button(data-skip='-10') &laquo; 10s
